@@ -17,27 +17,27 @@
 # Inherit from sdm710-common
 -include device/xiaomi/sdm710-common/BoardConfigCommon.mk
 
-DEVICE_PATH := device/xiaomi/grus
+DEVICE_PATH := device/xiaomi/sirius
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := grus
+TARGET_OTA_ASSERT_DEVICE := sirius
 
 # Kernel
-TARGET_KERNEL_CONFIG := grus_defconfig
+TARGET_KERNEL_CONFIG := sirius_defconfig
+
+# Lights
+TARGET_PROVIDES_LIBLIGHT := true
 
 # Partitions
-BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
-BOARD_BOOTIMAGE_PARTITION_SIZE := 134217728
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3758096384
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 67108864
+BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2684354560
 
 # Power
-TARGET_TAP_TO_WAKE_NODE := "/dev/input/event2"
+TARGET_TAP_TO_WAKE_NODE := "/dev/input/event3"
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
-
-# NFC
-TARGET_USES_NQ_NFC := true
 
 # Inherit from the proprietary version
 -include vendor/xiaomi/grus/BoardConfigVendor.mk
