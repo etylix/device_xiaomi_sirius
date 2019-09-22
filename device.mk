@@ -24,10 +24,6 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 TARGET_SCREEN_HEIGHT := 2244
 TARGET_SCREEN_WIDTH := 1080
 
-# Add Calendar
-# PRODUCT_PACKAGES += \
-#     Calendar
-
 # Device fstab
 PRODUCT_PACKAGES += \
     fstab.qcom
