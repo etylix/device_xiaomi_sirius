@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o_mr1.mk)
 
 # Inherit from sdm710-common
@@ -11,6 +12,9 @@ $(call inherit-product, device/xiaomi/sdm710-common/sdm710.mk)
 
 # Vendor
 $(call inherit-product-if-exists, vendor/xiaomi/sirius/sirius-vendor.mk)
+
+# Properties
+-include $(LOCAL_PATH)/device-props.mk
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
@@ -32,10 +36,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     init.target.rc
 
-# HIDL
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/manifest.xml:system/etc/manifest.xml
-
 # Input
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/idc/uinput-fpc.idc:system/usr/idc/uinput-fpc.idc \
@@ -50,7 +50,3 @@ PRODUCT_COPY_FILES += \
 # PocketMode
 PRODUCT_PACKAGES += \
     XiaomiPocketMode
-
-# Power
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/perf/perf-profile0.conf:$(TARGET_COPY_OUT_VENDOR)/etc/perf/perf-profile0.conf
